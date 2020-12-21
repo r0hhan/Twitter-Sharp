@@ -21,7 +21,8 @@ open StackExchange.Redis
 open Newtonsoft.Json
 
 // Creates the connection to the Redis server
-let cx = ConnectionMultiplexer.Connect @"localhost,allowAdmin=true"
+let cx = ConnectionMultiplexer.Connect @"redis-19021.c56.east-us.azure.cloud.redislabs.com:19021
+,allowAdmin=true,password=q1HOMX6w5FB5WKhtSUPJJLMtM3lZGkKs"
 
 module Database = 
     let cache = cx.GetDatabase()
