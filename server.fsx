@@ -27,8 +27,7 @@ open StackExchange.Redis
 open Newtonsoft.Json
 
 // Creates the connection to the Redis server
-let cx = ConnectionMultiplexer.Connect @"redis-19021.c56.east-us.azure.cloud.redislabs.com:19021
-,allowAdmin=true,password=q1HOMX6w5FB5WKhtSUPJJLMtM3lZGkKs"
+let cx = ConnectionMultiplexer.Connect @"localhost:8080,allowAdmin=true"
 let redisServer = cx.GetServer(cx.GetEndPoints().[0])
 printfn "\n\nFlushing Redis ... "
 // Flushing the data initially for a new start
