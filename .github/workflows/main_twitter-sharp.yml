@@ -19,16 +19,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.x'
-    
-    - name: Running Web app
-      run: |
-        dotnet fsi server.fsx
 
-    # - name: Build with dotnet
-    #   run: dotnet build --configuration Release
+    - name: Build with dotnet
+      run: dotnet build --configuration Release
 
-    # - name: dotnet publish
-    #   run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+    - name: dotnet publish
+      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
@@ -36,4 +32,4 @@ jobs:
         app-name: 'twitter-sharp'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_78591425ef22440390cadff592879b26 }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        package: ${{env.DOTNET_ROOT}}/myapp 

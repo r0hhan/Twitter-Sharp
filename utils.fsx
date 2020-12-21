@@ -1,3 +1,5 @@
+module Utils
+
 open System
 
 type UserData = {
