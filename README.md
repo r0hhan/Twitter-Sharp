@@ -32,7 +32,6 @@ UFID: 5699-6044   &emsp;  UFID: 4511-0561
 _Note_: A client that exits/closes a terminal is considered to have left the system and cannot reconnect.  
 _Note_: The Python client has no processing and is only sending serialized messages to the server and deserializing the received messages for display.
 
-<br><br><br><br><br>
 
 ## Functions
 
