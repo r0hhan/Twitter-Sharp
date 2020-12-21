@@ -1,3 +1,9 @@
+#r "nuget: Newtonsoft.Json"
+#r "nuget: Suave"
+#r "nuget: StackExchange.Redis"
+
+#load "utils.fsx"
+
 open Suave
 open Suave.Http
 open Suave.Operators
@@ -23,6 +29,10 @@ open Newtonsoft.Json
 // Creates the connection to the Redis server
 let cx = ConnectionMultiplexer.Connect @"redis-19021.c56.east-us.azure.cloud.redislabs.com:19021
 ,allowAdmin=true,password=q1HOMX6w5FB5WKhtSUPJJLMtM3lZGkKs"
+let redisServer = cx.GetServer(cx.GetEndPoints().[0])
+printfn "\n\nFlushing Redis ... "
+// Flushing the data initially for a new start
+redisServer.FlushDatabase()
 
 module Database = 
     let cache = cx.GetDatabase()
@@ -398,12 +408,5 @@ let app : WebPart =
         path "/websocket" >=> handShake ws
         NOT_FOUND "Found no handlers." ]
 
-[<EntryPoint>]
-let main _ =
-    let redisServer = cx.GetServer(cx.GetEndPoints().[0])
-    printfn "\n\nFlushing Redis ... "
-    // Flushing the data initially for a new start
-    redisServer.FlushDatabase()
-    // starts the server
-    startWebServer { defaultConfig with logger = Targets.create Verbose [| |] } app
-    0
+// starts the server
+startWebServer { defaultConfig with logger = Targets.create Verbose [| |] } app
