@@ -404,6 +404,7 @@ let ws (webSocket : WebSocket) (context: HttpContext) =
 let app : WebPart = 
     choose [
         // This assigns the handler for the websocket
+        path "/" >=> (OK "Connect via a Client")
         path "/websocket" >=> handShake ws
         NOT_FOUND "Found no handlers." ]
 
@@ -413,8 +414,8 @@ let app : WebPart =
 let cfg =
   { defaultConfig with
       bindings =
-        [ HttpBinding.create HTTP IPAddress.Loopback 80us
-          HttpBinding.createSimple HTTP "0.0.0.0" 9000 ]
+        [ HttpBinding.createSimple HTTP "0.0.0.0" 8080
+          HttpBinding.createSimple HTTP "0.0.0.0" 80 ]
       listenTimeout = TimeSpan.FromMilliseconds 3000. }
 app
 |> startWebServer cfg
