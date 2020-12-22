@@ -27,7 +27,7 @@ open StackExchange.Redis
 open Newtonsoft.Json
 
 // Creates the connection to the Redis server
-let cx = ConnectionMultiplexer.Connect @"localhost:8080,allowAdmin=true"
+let cx = ConnectionMultiplexer.Connect @"redis-11926.c56.east-us.azure.cloud.redislabs.com:11926,allowAdmin=true,password=GPNUK2mhf0KjQ5CANzyD2GvzgDIPeHGw"
 let redisServer = cx.GetServer(cx.GetEndPoints().[0])
 printfn "\n\nFlushing Redis ... "
 // Flushing the data initially for a new start
@@ -408,4 +408,13 @@ let app : WebPart =
         NOT_FOUND "Found no handlers." ]
 
 // starts the server
-startWebServer { defaultConfig with logger = Targets.create Verbose [| |] } app
+// startWebServer { defaultConfig with logger = Targets.create Verbose [| |] } app
+
+let cfg =
+  { defaultConfig with
+      bindings =
+        [ HttpBinding.create HTTP IPAddress.Loopback 80us
+          HttpBinding.createSimple HTTP "0.0.0.0" 9000 ]
+      listenTimeout = TimeSpan.FromMilliseconds 3000. }
+app
+|> startWebServer cfg
