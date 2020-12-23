@@ -1,5 +1,7 @@
 Rohit Choudhari   &emsp;  Rohan Hemant Wanare  
-@InfernapeXavier   &emsp;  @r0hhan
+[@InfernapeXavier](https://github.com/InfernapeXavier)   &emsp;  [@r0hhan](https://github.com/r0hhan)
+
+
 
 > Disclaimer: The dotnet SDK was recently updated to make `5.0` an official release. We have been using that to test this project.  
 
