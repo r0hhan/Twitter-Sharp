@@ -12,6 +12,7 @@ Rohit Choudhari   &emsp;  &nbsp; Rohan Hemant Wanare
     
     1. Start Server => `dotnet fsi server.fsx`
     2. Start Clients => `python client.py`
+> Files for building the server via Docker have also been included
 
 
 ## Design
