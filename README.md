@@ -1,18 +1,15 @@
 Rohit Choudhari   &emsp;  Rohan Hemant Wanare  
-UFID: 5699-6044   &emsp;  UFID: 4511-0561
+@InfernapeXavier   &emsp;  @r0hhan
 
 > Disclaimer: The dotnet SDK was recently updated to make `5.0` an official release. We have been using that to test this project.  
 
 > Video Demo: [YouTube](https://www.youtube.com/watch?v=IQGhKvBD7AA)  
-> Inputs: `None`  
 > Requirements:   
     `F#: Suave StackExchange.Redis Newtonsoft.Json` <br> `Python 3.7+: websocket-client` <br>
-> Redis needs to be run locally, we use the default `redis-server` configuration on `Ubuntu`.  
 > Run:  
     
-    1. Start Redis Server => `sudo service redis-server restart`
-    2. Start Server => `dotnet fsi server.fsx`
-    3. Start Clients => `python client.py`
+    1. Start Server => `dotnet fsi server.fsx`
+    2. Start Clients => `python client.py`
 
 
 ## Design
