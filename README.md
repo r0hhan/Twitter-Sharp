@@ -40,10 +40,11 @@ _Note_: The Python client has no processing and is only sending serialized messa
 1. **Register**: A new user is created and added to the database. At the same time, the user is added to a set that maintains all the currently connected clients.
 2. **Connect**: If a user chooses to disconnect from the server, they can reconnect to the server using this function. This is equivalent to logging in the twitter environment, so the client can carry all kinds of functionality.
 3. **Disconnect**: A user can choose to disconnect if they are currently connected to the server. Being disconnected will result in removal from the connected clients set on the server and they will no longer receive tweets from the people they follow or be allowed to make requests. This is equivalent to logging out of the twitter environment.
-4. **Tweet**: A user can send a new tweet using this function. The tweet is parsed and the appropriate mappings are added to the database. Once the tweet is registered, it is pushed by the server to all users that are live and have followed the user who initiated the tweet.
-5. **Retweet**: A user can use this function to send a retweet provided they know the tweet id of a tweet by someone else. The server first fetched the original tweet's details and modifies it appropriately before registering it as a new tweet (with the retweet flag) and then processes it in the same way as a regular tweet.
-6. **Search**: We have 3 search queries, each of them returns a set of tweets that satisfy the appropriate conditions.
-7. **Remove**: Whenever the user exits the environment, our program closes the client's websocket as well as removes the client's details from the Database since after that another client with same username can register. This is equivalent to deleting your account.
+4. **Follow**: A user can choose to follow another user. The appropriate changes are made to the following set and the followers set of the required users.
+5. **Tweet**: A user can send a new tweet using this function. The tweet is parsed and the appropriate mappings are added to the database. Once the tweet is registered, it is pushed by the server to all users that are live and have followed the user who initiated the tweet.
+6. **Retweet**: A user can use this function to send a retweet provided they know the tweet id of a tweet by someone else. The server first fetched the original tweet's details and modifies it appropriately before registering it as a new tweet (with the retweet flag) and then processes it in the same way as a regular tweet.
+7. **Search**: We have 3 search queries, each of them returns a set of tweets that satisfy the appropriate conditions.
+8. **Remove**: Whenever the user exits the environment, our program closes the client's websocket as well as removes the client's details from the Database since after that another client with same username can register. This is equivalent to deleting your account.
 
 
 ## Database Structure
